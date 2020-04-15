@@ -1,5 +1,25 @@
 <html>
     <body>
-        Hi
-    </body>
+        <table border="1">
+            <tr>
+                <th>Tablet Name</th>
+                <th>Buying Rate</th>
+                <th>Selling Rate</th>
+                <th>Stocks</th>
+                <th>Profit</th>
+
+            </tr>
+        {% for post in posts %}
+            <tr>
+                <td>{{post.Tablet_Name}}</td>
+                <td>{{post.Buying_Rate}}</td>
+                <td>{{post.Selling_Rate}}</td>
+                <td>{{post.Pieces}}</td>
+                <td>{{post.Profit}}</td>
+            </tr>    
+        
+        
+    {% endfor %}    
+</table>    
+</body>
 </html>

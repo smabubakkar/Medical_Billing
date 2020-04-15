@@ -9,13 +9,18 @@ class Post(models.Model):
     Buying_Rate = models.FloatField(null=True)
     Pieces=models.IntegerField(null=True)
     Selling_Rate=models.FloatField(null=True)
+    Profit=models.FloatField(default=0.0,null=True)
+    @property
+    def calc_profit(self):
+       return self.Selling_Rate-self.Buying_Rate
+    
+    
     #created_date = models.DateTimeField(default=timezone.now)
     #published_date = models.DateTimeField(blank=True, null=True)
     #publish_now=models.BooleanField(default=True)
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+    def save(self,*args,**kwargs):
+        self.Profit=self.calc_profit
+        super(Post,self).save(*args,**kwargs)
 
     def __str__(self):
-        #return self.title
-        pass
+        return str(self.Tablet_Name)
